@@ -1,0 +1,271 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	display: flex;
+	background-color: beige;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+	min-height: 100vh;
+}
+
+.app-container{
+	position: relative;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+	flex-direction: column;
+	justify-content: center;
+	width: 415px;
+	padding: 25px 30px;
+	border-radius: 15px;
+	background: linear-gradient(rgb(226, 186, 193) 15%, rgba(53, 46, 46, 0.5) 85%);
+	box-shadow: 0px 6px 15px rgba(53, 46, 46, 0.5);
+}
+.app-container i{
+	cursor: pointer;
+}
+
+	/* Using flex with the column direction to
+	align items in a vertical direction */
+
+.details {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	margin-top: 25px;
+}
+.heading {
+	width: 100%;
+	margin-top: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.heading span{
+	font-size: 25px;
+	margin-left: -3px;
+	color: rgb(90, 84, 84);
+}
+.heading i{
+	font-size: 30px;
+	color: rgb(97, 92, 92);
+	transition: color 0.1s;
+}
+.heading i:hover{
+	color:darkslategrey
+}
+
+.track-art {
+	margin: 25px;
+	height: 256px;
+	width: 100%;
+	background-image: URL(
+	"/victory.png");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 15px;
+	cursor: pointer;
+}
+
+/* Changing the font sizes to suitable ones */
+
+.track-name {
+	font-size: 3rem;
+}
+
+.track-artist {
+	font-size: 1.5rem;
+}
+
+/* Using flex with the row direction to
+align items in a horizontal direction */
+.buttons {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.playpause-track,
+.prev-track,
+.next-track {
+	padding: 25px;
+	opacity: 0.8;
+
+/* Smoothly transition the opacity */
+	transition: opacity .2s;
+}
+
+/* Change the opacity when mouse is hovered */
+.playpause-track:hover,
+.prev-track:hover,
+.next-track:hover {
+	opacity: 1.0;
+}
+
+/* Define the slider width so that it scales properly */
+.slider_container {
+	width: 75%;
+	max-width: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+/* Modify the appearance of the slider */
+.seek_slider, .volume_slider {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	height: 5px;
+	background: black;
+	opacity: 0.7;
+	cursor: pointer;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+}
+
+/* Modify the appearance of the slider thumb */
+.seek_slider::-webkit-slider-thumb,
+.volume_slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	width: 15px;
+	height: 15px;
+	background: white;
+	cursor: pointer;
+	border-radius: 50%;
+}
+
+/* Change the opacity when mouse is hovered */
+.seek_slider:hover,
+.volume_slider:hover {
+	opacity: 1.0;
+}
+
+.seek_slider {
+	width: 60%;
+}
+
+.volume_slider {
+	width: 30%;
+}
+
+.current-time,
+.total-duration {
+	padding: 10px;
+}
+
+i.fa-volume-down,
+i.fa-volume-up {
+	padding: 10px;
+}
+
+/* Change the mouse cursor to a pointer
+when hovered over */
+i.fa-play-circle,
+i.fa-pause-circle,
+i.fa-step-forward,
+i.fa-step-backward {
+	cursor: pointer;
+}
+
+.playlist{
+	width: 100%;
+	height:100%;
+	position: absolute;
+	top: 0;
+	right: -100%;
+	padding: 30px 0;
+	background: linear-gradient(rgb(116, 101, 101) 5%, rgb(0, 0, 0) 95%);
+	z-index: 3;
+	transition: 1s;
+	overflow: auto;
+}
+.playlist .back{
+	margin-left: 20px;
+	border: none;
+	outline: none;
+	height: 45px;
+	width: 45px;
+	font-size: 25px;
+	cursor: pointer;
+	border-radius: 50%;
+	background: rgb(136, 116, 116);
+}
+.playlist .back:hover{
+	background: rgb(65, 49, 49);
+}
+
+.playlist.active {
+	left: 0;
+}
+.title{
+	font-size: 30px;
+	font-weight: 300;
+	text-align: center;
+	margin-top: 12px;
+	color: rgb(37, 34, 34);
+	text-transform: capitalize;
+	margin-bottom: 30px;
+}
+
+.queue{
+	width: 100%;
+	height:80px;
+	padding: 0 30px;
+	display: flex;
+	align-items: center;
+	/* justify-content: space-between; */
+	border-radius: 10px;
+	transition: 0.5s;
+	cursor: pointer;
+	box-shadow: 0.1px 8px 8px 2px rgba(0, 0, 0, 0.1);
+}
+
+
+.queue-cover{
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 20px;
+    position: relative;
+}
+
+.queue button{
+	z-index: 20;
+	height: 45px;
+	width: 50px;
+	border-radius: 50%;
+	font-size: 25px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.08);
+	box-shadow: 0px 5px 8px 2px rgba(0, 0, 0, 0.2);
+}
+.queue button:hover{
+	background: linear-gradient(to right, #44342f, #502b20);
+	box-shadow: 0.1px 8px 8px 2px rgba(0, 0, 0, 0.2) inset,
+	  0.1px 8px 8px 2px rgba(0, 0, 0, 0.2);
+}
+
+
+.queue .name{
+    font-size: 22px;
+    text-transform: capitalize;
+}
