@@ -269,3 +269,10 @@ i.fa-step-backward {
     font-size: 22px;
     text-transform: capitalize;
 }
+@media (max-width: 415px){
+	.app-container{
+		min-height: 100vh;
+		border-radius: 0px;
+		padding: 15px;
+	}
+}

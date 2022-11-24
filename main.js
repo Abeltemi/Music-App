@@ -14,22 +14,15 @@ let volume_slider = document.querySelector(".volume_slider");
 let curr_time = document.querySelector(".current-time");
 let total_duration = document.querySelector(".total-duration");
 
+let get_playlist_btn = document.querySelectorAll(".play-icn")
 
 let changeTheme = document.querySelector("#theme");
-let app_container = document.querySelector('.app-container')
+let app_container = document.querySelector('.app-container');
 
-// playlist section
-const playlistBar = document.getElementById("bar");
-let playlist = document.querySelector(".playlist");
-const goback = document.querySelector('.back');
-
-playlistBar.addEventListener("click", () => {
-    playlist.classList.add('active');
-})
-
-goback.addEventListener("click", () => {
-    playlist.classList.remove('active');
-})
+let play_lis_btn1 = document.getElementById("1");
+let play_lis_btn2 = document.getElementById("2");
+let play_lis_btn3 = document.getElementById("3");
+let play_lis_btn4 = document.getElementById("4");
 
 // Specify globally used values
 let track_index = 0;
@@ -92,6 +85,47 @@ function loadTrack(track_index) {
     
     // Apply a random background color
     }
+
+// playlist section
+const playlistBar = document.getElementById("bar");
+let playlist = document.querySelector(".playlist");
+const goback = document.querySelector('.back');
+
+goback.addEventListener("click", () => {
+    playlist.classList.remove('active');
+})
+
+playlistBar.addEventListener("click", () => {
+    playlist.classList.add('active');
+    if(playlist.classList.contains('active')){
+        if(play_lis_btn1.clicked == true) {
+            loadTrack[0]}
+        else if(play_lis_btn2.clicked == true) { 
+            loadTrack[1]}
+        else if(play_lis_btn3.clicked == true) {
+            loadTrack[2]}
+        else if(play_lis_btn4.clicked == true) {loadTrack[3]}
+    }
+
+})
+
+// function checkplaylist(){
+//     if(playlist.classList.contains('active')){
+//         for (let i=0; i<get_playlist_btn.length; i++){
+//             ((index) => {
+//                 get_playlist_btn[index].addEventListener('clicked', event =>{
+//                     if(get_playlist_btn[index].clicked ===true) loadTrack(index)
+//                 })
+//             })(i)
+//             }
+//     }
+// }
+
+// function Playlist(eachbtn, index){
+//     // loadTrack(track_index)
+//     eachbtn.addEventListener('click', loadTrack(index))
+    
+// }
     
 changeTheme.addEventListener("click", () => {
     // Get a random number between 64 to 256
@@ -208,3 +242,4 @@ function seekUpdate() {
 }
 // Load the first track in the tracklist
 loadTrack(track_index);
+
