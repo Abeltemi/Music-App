@@ -19,10 +19,7 @@ let get_playlist_btn = document.querySelectorAll(".play-icn")
 let changeTheme = document.querySelector("#theme");
 let app_container = document.querySelector('.app-container');
 
-let play_lis_btn1 = document.getElementById("1");
-let play_lis_btn2 = document.getElementById("2");
-let play_lis_btn3 = document.getElementById("3");
-let play_lis_btn4 = document.getElementById("4");
+const getPlayBtn = document.getElementsByClassName("play-icn");
 
 // Specify globally used values
 let track_index = 0;
@@ -97,36 +94,31 @@ goback.addEventListener("click", () => {
 
 playlistBar.addEventListener("click", () => {
     playlist.classList.add('active');
-    if(playlist.classList.contains('active')){
-        if(play_lis_btn1.clicked == true) {
-            loadTrack[0]}
-        else if(play_lis_btn2.clicked == true) { 
-            loadTrack[1]}
-        else if(play_lis_btn3.clicked == true) {
-            loadTrack[2]}
-        else if(play_lis_btn4.clicked == true) {loadTrack[3]}
-    }
-
+    playlistSection();
 })
 
-// function checkplaylist(){
-//     if(playlist.classList.contains('active')){
-//         for (let i=0; i<get_playlist_btn.length; i++){
-//             ((index) => {
-//                 get_playlist_btn[index].addEventListener('clicked', event =>{
-//                     if(get_playlist_btn[index].clicked ===true) loadTrack(index)
-//                 })
-//             })(i)
-//             }
-//     }
-// }
 
-// function Playlist(eachbtn, index){
-//     // loadTrack(track_index)
-//     eachbtn.addEventListener('click', loadTrack(index))
+function playlistSection(){
+    var btnid = 0;
+    if(playlist.classList.contains('active')){
+        console.log(getPlayBtn);
+        for(let i =0; i<getPlayBtn.length; i++){
+            getPlayBtn[i].addEventListener('click', () => {
+                btnid = getPlayBtn[i].id;
+                // console.log(btnid);
+                loadTrack(btnid - 1);
+                curr_track.play();
+                setTimeout(() => {
+                    playlist.classList.remove('active');
+                }, 100);
+            })
+            
+        }
+    }
     
-// }
-    
+}
+
+
 changeTheme.addEventListener("click", () => {
     // Get a random number between 64 to 256
     // (for getting lighter colors)
@@ -242,4 +234,3 @@ function seekUpdate() {
 }
 // Load the first track in the tracklist
 loadTrack(track_index);
-
