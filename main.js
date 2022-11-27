@@ -108,6 +108,7 @@ function playlistSection(){
                 // console.log(btnid);
                 loadTrack(btnid - 1);
                 curr_track.play();
+                playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
                 setTimeout(() => {
                     playlist.classList.remove('active');
                 }, 100);
